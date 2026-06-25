@@ -1,31 +1,38 @@
 import './App.css'
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import EmoplyeeList from './pages/EmployeeList'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 import MainPage from './pages/MainPage'
+import HSCVList from './pages/HSCVList'
+import RequestDocumentList from './pages/RequestDocumentPage'
+import RequestDocumentEdit from './pages/EditRequestDocumentPage'
 
 function App() {
-  // const [count, setCount] = useState(0)
   return (
     <>
       <div>
-        <a href='/EmployeeList'>Employ Page</a>
-        <a href='/MainPage'> Main Page
-        </a>
+        <Link to="/HSCV">Employ Page</Link>
+        <Link to="/RequestDocument">Request Document Page</Link>
+        <Link to="/">Main Page</Link>
       </div>
 
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/EmployeeList"
-            element={<EmoplyeeList />}
-          />
-          <Route
-            path="/MainPage"
-            element={<MainPage />}
-          />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route
+          path="/HSCV"
+          element={<HSCVList />}
+        />
+        <Route
+          path="/RequestDocument"
+          element={<RequestDocumentList />}
+        />
+        <Route
+          path="/"
+          element={<MainPage />}
+        />
+        <Route
+          path='/RequestDocumentEdit/:id'
+          element={<RequestDocumentEdit />}
+        />
+      </Routes>
     </>
   )
 }
